@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L-Cell | Teddy's Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project_style.css">
+    <style>
+        :root {
+            --project-accent: #ffa7a9;
+            --project-shadow: #c75b5e;
+        }
+    </style>
+</head>
+<body>
+    <a href="projects.html" class="back-link">← Back to Menu</a>
+
+    <header class="project-header">
+        <div class="banner-container">
+            <!-- Replace this with your final hand-drawn banner at 3840x1000 px, 300 dpi -->
+            <img src="images/lcell_banner.png" alt="L-Cell project banner" class="project-banner">
+        </div>
+    </header>
+
+    <main class="project-content">
+        <div class="accordion" aria-label="L-Cell project details">
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>OBJECTIVES</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        Produce a realistic mock phone that looks believable in a live performance while remaining quick to produce and
+                        durable enough for repeated use.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>TOOLS</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        &#9881; Onshape <br> &#9881; Adobe Illustrator <br> &#9881; Epilog Laser Cutter <br> &#9881; BambuLab X1C 3D Printer
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>TIMELINE</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        Designed over a 3-day period during my makerspace internship at the Lili'uokalani Center.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Concept</p>
+                <h2>A Prop Phone</h2>
+                <p>
+                    I was asked by the performing arts team to transform a rectangular LED light block into a realistic prop phone.
+                    I wanted to design a case that could be used directly off of the print bed&mdash;I opted to use a friction fit design, but it was
+                    difficult to get the tolerances correct.
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/lcell_concept.jpeg" alt="L-Cell concept image">
+            </div>
+        </section>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Recipe</p>
+                <h2>The L-CELL</h2>
+                <p>
+                    The build was designed in Onshape, then 3D printed on a BambuLab X1C. To minimize the phone's thickness,
+                    the phone backing was laser cut from cardstock, which had the additional benefit of letting me try out a
+                    variety of designs I made in Adobe Illustrator.
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/lcell_recipe.jpeg" alt="L-Cell recipe image">
+            </div>
+        </section>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Feedback</p>
+                <h2>Well Received!</h2>
+                <p>
+                    The performers were happy with the final product, and it was used to great effect in their stage play. As far as I know,
+                    I didn't hear of the light blocks coming loose during the performance! 
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/lcell_feedback.jpeg" alt="L-Cell feedback image">
+            </div>
+        </section>
+
+        <section class="project-gallery" aria-label="Project gallery carousel">
+            <div class="gallery-frame">
+                <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">←</button>
+                <div class="gallery-track">
+                    <img class="gallery-slide active" src="images/lcell_carousel1.jpeg" alt="L-Cell concept gallery image">
+                    <img class="gallery-slide" src="images/lcell_concept.jpeg" alt="L-Cell concept gallery image">
+                    <img class="gallery-slide" src="images/lcell_recipe.jpeg" alt="L-Cell recipe gallery image">
+                    <img class="gallery-slide" src="images/lcell_carousel4.jpeg" alt="L-Cell banner gallery image">
+                </div>
+                <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">→</button>
+            </div>
+            <div class="gallery-dots" aria-label="Gallery navigation">
+                <button class="dot active" type="button" aria-label="Show slide 1"></button>
+                <button class="dot" type="button" aria-label="Show slide 2"></button>
+                <button class="dot" type="button" aria-label="Show slide 3"></button>
+                <button class="dot" type="button" aria-label="Show slide 4"></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        function closeAllAccordions() {
+            document.querySelectorAll('.accordion-item').forEach((accordionItem) => {
+                accordionItem.classList.remove('open');
+                const header = accordionItem.querySelector('.accordion-header');
+                const panel = accordionItem.querySelector('.accordion-panel');
+                const icon = accordionItem.querySelector('.icon');
+
+                header.classList.remove('active');
+                header.setAttribute('aria-expanded', 'false');
+                if (icon) icon.textContent = '+';
+                if (panel) panel.style.maxHeight = null;
+            });
+        }
+
+        headers.forEach((header) => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const panel = item.querySelector('.accordion-panel');
+                const isOpen = item.classList.contains('open');
+
+                closeAllAccordions();
+
+                if (!isOpen) {
+                    item.classList.add('open');
+                    header.classList.add('active');
+                    header.setAttribute('aria-expanded', 'true');
+                    header.querySelector('.icon').textContent = '−';
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                }
+            });
+        });
+
+        const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+        const dots = Array.from(document.querySelectorAll('.dot'));
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            currentSlide = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        document.querySelector('.gallery-next').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        document.querySelector('.gallery-prev').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+    </script>
+</body>
+</html>

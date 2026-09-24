@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teddy's Table | Engineering Portfolio</title>
+    <!-- Preloading the hover image for a smooth transition -->
+    <link rel="preload" href="images/menu_open.png" as="image">
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Bona Nova from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="table-header">
+    <div class="logo-container">
+        <img src="images/banner.png" alt="Teddy's Table Logo" class="header-logo">
+    </div>
+</header>
+
+    <main class="table-stage">
+        
+        <!-- Interactive Menu Section -->
+        <div class="menu-container">
+            <a href="projects.html" class="menu-link">
+                <img src="images/menu_closed.png" alt="Closed Menu" class="menu-img closed">
+                <img src="images/menu_open.png" alt="Open Menu" class="menu-img open">
+            </a>
+            <p class="instruction">View Projects</p>
+        </div>
+
+        <!-- Interactive Engineer Section -->
+        <div class="engineer-container">
+            <div id="about-bubble" class="speech-bubble" onclick="closeAbout()">
+                <p><strong>Teddy</strong></p>
+                <p class="role-line">Mechanical Engineer | Boston University</p>
+                <p><a href="https://www.linkedin.com/in/teddysepulve/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+                <small>(Click to close)</small>
+            </div>
+            <img src="images/teddy_chef.png" alt="Teddy the Engineer" class="engineer-img" onclick="toggleAbout()">
+            <p class="instruction">About the Chef</p>
+        </div>
+
+    </main>
+
+    <footer class="table-footer">
+        <p>&copy; 2026 Teddy's Table | Engineering Portfolio</p>
+    </footer>
+
+    <script>
+        function toggleAbout() {
+            const bubble = document.getElementById("about-bubble");
+            const container = document.querySelector(".engineer-container");
+
+            if (bubble.classList.contains("show")) {
+                return;
+            }
+
+            bubble.classList.add("show");
+            container.classList.add("bubble-open");
+        }
+
+        function closeAbout() {
+            const bubble = document.getElementById("about-bubble");
+            const container = document.querySelector(".engineer-container");
+
+            bubble.classList.remove("show");
+            container.classList.remove("bubble-open");
+        }
+    </script>
+
+    <div id="chef-track">
+    <img src="images/chef_1.png" class="runner" id="runner1">
+    <img src="images/chef_2.png" class="runner" id="runner2">
+    <img src="images/chef_3.png" class="runner" id="runner3">
+    <script>
+        const runners = [
+            { id: 'runner1', x: 0, speed: 2, dir: 1 },
+            { id: 'runner2', x: 500, speed: 1.2, dir: 1 },
+            { id: 'runner3', x: 200, speed: 2.5, dir: 1 }
+        ];
+
+        function animateRunners() {
+            const screenWidth = window.innerWidth;
+
+            runners.forEach(r => {
+                const el = document.getElementById(r.id);
+                if (!el) return; // Safety check
+
+                const width = el.offsetWidth;
+
+                // Update Position
+                r.x += r.speed * r.dir;
+
+                // Bounce Logic
+                if (r.x + width >= screenWidth) {
+                    r.dir = -1; // Face left
+                } else if (r.x <= 0) {
+                    r.dir = 1; // Face right
+                }
+
+                // Apply Position & Flip Image
+                el.style.left = r.x + 'px';
+                
+                // CSS scaleX handles the "turning around" flip
+                if (r.dir === -1) {
+                    el.style.transform = 'scaleX(-1)'; 
+                } else {
+                    el.style.transform = 'scaleX(1)';
+                }
+            });
+
+            requestAnimationFrame(animateRunners);
+        }
+
+        // Start the animation once the page is ready
+        window.addEventListener('load', animateRunners);
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Stamp Roller | Teddy's Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project_style.css">
+    <style>
+        :root {
+            --project-accent: #0f4e2c;
+            --project-shadow: #09311b;
+        }
+    </style>
+</head>
+<body>
+    <a href="projects.html" class="back-link">← Back to Menu</a>
+
+    <header class="project-header">
+        <div class="banner-container">
+            <img src="images/stamproller_banner.png" alt="Mini Stamp Roller project banner" class="project-banner">
+        </div>
+    </header>
+
+    <main class="project-content">
+        <div class="accordion" aria-label="Mini Stamp Roller project details">
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>OBJECTIVES</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        Design a compact stamp roller that is fast to print and teaches the fundamental tools of 3D design and fabrication to young learners.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>TOOLS</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        &#9881; Onshape <br> &#9881; BambuLab X1C 3D Printer <br> &#9881; Presentation Design <br> &#9881; Rapid Prototyping
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>TIMELINE</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        The activity and presentation were designed over a 2-week period during my makerspace internship at the Lili'uokalani Center.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Concept</p>
+                <h2>Capstone</h2>
+                <p>
+                    My internship capstone project was to organize a hands-on activity that would teach kids the
+                    fundamentals of 3D design. I aimed for something customizable; something that, above all, would convince
+                    the audience that making their own things is fun and accessible.
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/stamproller_concept.jpeg" alt="Mini Stamp Roller concept image">
+            </div>
+        </section>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Recipe</p>
+                <h2>Recipe</h2>
+                <p>
+                    The mini stamp roller was designed in Onshape, then 3D printed on a BambuLab X1C. After lengthy experimentation
+                    with size, surface texture, ink type, and rolling surface, I settled on a design that permits complex stamp patterns
+                    but keeps print time and expenses low.
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/menu_stamproller.jpg" alt="Mini Stamp Roller recipe image">
+            </div>
+        </section>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Feedback</p>
+                <h2>Feedback</h2>
+                <p>
+                    The presentation and activity were well received by the audience. Handling pace and keeping the group on the same page
+                    was a challenge, but I am confident that I can improve
+                    the workshop experience through better organization and practice.
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/stamproller_feedback.jpeg" alt="Mini Stamp Roller feedback image">
+            </div>
+        </section>
+
+        <section class="project-gallery" aria-label="Mini Stamp Roller gallery carousel">
+            <div class="gallery-frame">
+                <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">←</button>
+                <div class="gallery-track">
+                    <img class="gallery-slide active" src="images/stamproller.jpeg" alt="Mini Stamp Roller gallery image 1">
+                    <img class="gallery-slide" src="images/stamproller_carousel2.jpeg" alt="Mini Stamp Roller gallery image 2">
+                    <video class="gallery-slide" src="images/stamproller_carousel3.mov" muted playsinline autoplay loop preload="metadata" aria-label="Mini Stamp Roller motion video"></video>
+                    <img class="gallery-slide" src="images/stamproller_carousel4.jpeg" alt="Mini Stamp Roller gallery image 4">
+                </div>
+                <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">→</button>
+            </div>
+            <div class="gallery-dots" aria-label="Gallery navigation">
+                <button class="dot active" type="button" aria-label="Show slide 1"></button>
+                <button class="dot" type="button" aria-label="Show slide 2"></button>
+                <button class="dot" type="button" aria-label="Show slide 3"></button>
+                <button class="dot" type="button" aria-label="Show slide 4"></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        function closeAllAccordions() {
+            document.querySelectorAll('.accordion-item').forEach((accordionItem) => {
+                accordionItem.classList.remove('open');
+                const header = accordionItem.querySelector('.accordion-header');
+                const panel = accordionItem.querySelector('.accordion-panel');
+                const icon = accordionItem.querySelector('.icon');
+
+                header.classList.remove('active');
+                header.setAttribute('aria-expanded', 'false');
+                if (icon) icon.textContent = '+';
+                if (panel) panel.style.maxHeight = null;
+            });
+        }
+
+        headers.forEach((header) => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const panel = item.querySelector('.accordion-panel');
+                const isOpen = item.classList.contains('open');
+
+                closeAllAccordions();
+
+                if (!isOpen) {
+                    item.classList.add('open');
+                    header.classList.add('active');
+                    header.setAttribute('aria-expanded', 'true');
+                    header.querySelector('.icon').textContent = '−';
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                }
+            });
+        });
+
+        const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+        const dots = Array.from(document.querySelectorAll('.dot'));
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            currentSlide = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        document.querySelector('.gallery-next').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        document.querySelector('.gallery-prev').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Printer Monitor | Teddy's Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project_style.css">
+    <style>
+        :root {
+            --project-accent: #ffd057;
+            --project-shadow: #eab539;
+        }
+    </style>
+</head>
+<body>
+    <a href="projects.html" class="back-link">← Back to Menu</a>
+
+    <header class="project-header">
+        <div class="banner-container">
+            <img src="images/3dprintmonitor_banner.png" alt="3D Printer Monitor project banner" class="project-banner">
+        </div>
+    </header>
+
+    <main class="project-content">
+        <div class="accordion" aria-label="3D Printer Monitor project details">
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>OBJECTIVES</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        Design a compact monitor that sits on a BambuLab X1C printer that alerts the user to print completion and errors.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>TOOLS</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        &#9881; Onshape <br> &#9881; BambuLab X1C 3D Printer <br> &#9881; Measurement <br> &#9881; Electronics <br> &#9881; Graphic Design
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>TIMELINE</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        Designed and prototyped over a 1 month period during my makerspace internship at the Lili'uokalani Center.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Concept</p>
+                <h2>Printers are Birds</h2>
+                <p>
+                    Upon learning that the 3D printers in the makerspace were given the Hawaiian names of bird species, I wanted to
+                    design monitors that could sit in front of the AMS and alert users to the print status. The "alert" would be a
+                    3D model of the corresponding bird that would spin vigorously when the print finished or if an error occurred.
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/3dprintmonitor_concept.jpeg" alt="3D Printer Monitor concept image">
+            </div>
+        </section>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Recipe</p>
+                <h2>Passion for Enclosures</h2>
+                <p>
+                    The monitor's size was the primary design constraint. Curating the appropriate electronic components and designing a compact enclosure was a lot of fun&mdash;I designed
+                    5 different iterations of the enclosure before settling on a design that makes disassembly and maintenance quick. 
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/3dprintmonitor_recipe.jpeg" alt="3D Printer Monitor recipe image">
+            </div>
+        </section>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Feedback</p>
+                <h2>It's Alive</h2>
+                <p>
+                    The bird I designed didn't look like the actual bird species, but that is because I have never CADed a bird before. 
+                    If I could design the device over again, I would experiment with E-ink displays to minimize the power consumption as well as
+                    conform to the overall aesthetic of the makerspace. 
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/menu_3dprintmonitor.jpg" alt="3D Printer Monitor feedback image">
+            </div>
+        </section>
+
+        <section class="project-gallery" aria-label="3D Printer Monitor gallery carousel">
+            <div class="gallery-frame">
+                <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">←</button>
+                <div class="gallery-track">
+                    <img class="gallery-slide active" src="images/menu_3dprintmonitor.jpg" alt="3D Printer Monitor gallery image 1">
+                    <video class="gallery-slide" src="images/3dprintmonitor_carousel2.mov" muted playsinline autoplay loop preload="metadata" aria-label="3D Printer Monitor motion video"></video>
+                    <img class="gallery-slide" src="images/3dprintmonitor_carousel3.jpeg" alt="3D Printer Monitor gallery image 3">
+                    <img class="gallery-slide" src="images/3dprintmonitor_carousel4.jpeg" alt="3D Printer Monitor gallery image 4">
+                </div>
+                <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">→</button>
+            </div>
+            <div class="gallery-dots" aria-label="Gallery navigation">
+                <button class="dot active" type="button" aria-label="Show slide 1"></button>
+                <button class="dot" type="button" aria-label="Show slide 2"></button>
+                <button class="dot" type="button" aria-label="Show slide 3"></button>
+                <button class="dot" type="button" aria-label="Show slide 4"></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        function closeAllAccordions() {
+            document.querySelectorAll('.accordion-item').forEach((accordionItem) => {
+                accordionItem.classList.remove('open');
+                const header = accordionItem.querySelector('.accordion-header');
+                const panel = accordionItem.querySelector('.accordion-panel');
+                const icon = accordionItem.querySelector('.icon');
+
+                header.classList.remove('active');
+                header.setAttribute('aria-expanded', 'false');
+                if (icon) icon.textContent = '+';
+                if (panel) panel.style.maxHeight = null;
+            });
+        }
+
+        headers.forEach((header) => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const panel = item.querySelector('.accordion-panel');
+                const isOpen = item.classList.contains('open');
+
+                closeAllAccordions();
+
+                if (!isOpen) {
+                    item.classList.add('open');
+                    header.classList.add('active');
+                    header.setAttribute('aria-expanded', 'true');
+                    header.querySelector('.icon').textContent = '−';
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                }
+            });
+        });
+
+        const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+        const dots = Array.from(document.querySelectorAll('.dot'));
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            currentSlide = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        document.querySelector('.gallery-next').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        document.querySelector('.gallery-prev').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+    </script>
+</body>
+</html>

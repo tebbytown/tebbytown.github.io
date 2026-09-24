@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolling Cookie Cutter | Teddy's Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="project_style.css">
+    <style>
+        :root {
+            --project-accent: #d30101;
+            --project-shadow: #ae1600;
+        }
+    </style>
+</head>
+<body>
+    <a href="projects.html" class="back-link">← Back to Menu</a>
+
+    <header class="project-header">
+        <div class="banner-container">
+            <img src="images/cookieroller_ banner.png" alt="Rolling Cookie Cutter project banner" class="project-banner">
+        </div>
+    </header>
+
+    <main class="project-content">
+        <div class="accordion" aria-label="Rolling Cookie Cutter project details">
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>OBJECTIVES</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        Design a rolling cookie cutter that produces a pattern of irregular shapes that can later be assembled into a larger cookie.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>TOOLS</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        &#9881; Onshape <br> &#9881; BambuLab X1C 3D Printer <br> &#9881; Tap Drill
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" type="button" aria-expanded="false">
+                    <span>TIMELINE</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-panel">
+                    <p>
+                        The device was designed, tested, and refined over a 1 month period during my makerspace internship at the Lili'uokalani Center.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Concept</p>
+                <h2>Queen Lili'uokalani's Quilt</h2>
+                <p>
+                    A member of the culinary team wanted to make an activity for young learners to decorate cookies that could be
+                    assembled into a larger piece inspired by the Imprisonment Quilt. The problem: this quilt has a "crazy quilt"
+                    design, meaning no shapes are geometrically the same. For a repeatable, reliable activity, we needed a way to produce
+                    the base cookies with ease.
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/cookieroller_concept.jpeg" alt="Rolling Cookie Cutter concept image">
+            </div>
+        </section>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Recipe</p>
+                <h2>Product Design Fundamentals</h2>
+                <p>
+                    The cutter was modeled in Onshape and iterated through multiple layer resolution and assembly tests. More importantly,
+                    though, this project was particularly client-focused, and it was one of my first experiences designing a product around a client's
+                    vision. 
+                </p>
+            </div>
+            <div class="project-story-image">
+                <img src="images/cookieroller_recipe.jpeg" alt="Rolling Cookie Cutter recipe image">
+            </div>
+        </section>
+
+        <section class="project-story-card">
+            <div class="project-story-text">
+                <p class="story-label">Feedback</p>
+                <h2>Worked Like a Charm</h2>
+                <p>
+                    The team valued the robustness of the mechanism and the quality of the cuts in the soft, pliable dough.
+                    The little digits that the cutter imprints into the dough also made assembly of the cookies simple.
+                    The tool and the associated files were left with the culinary team for future use!
+            </div>
+            <div class="project-story-image">
+                <img src="images/cookieroller_feedback.jpeg" alt="Rolling Cookie Cutter feedback image">
+            </div>
+        </section>
+
+        <section class="project-gallery" aria-label="Rolling Cookie Cutter gallery carousel">
+            <div class="gallery-frame">
+                <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image">←</button>
+                <div class="gallery-track">
+                    <img class="gallery-slide active" src="images/cookieroller.jpeg" alt="Rolling Cookie Cutter gallery image 1">
+                    <video class="gallery-slide" src="images/cookieroller_carousel2.mov" muted playsinline autoplay loop preload="metadata" aria-label="Rolling Cookie Cutter motion video"></video>
+                    <img class="gallery-slide" src="images/cookieroller_carousel3.jpeg" alt="Rolling Cookie Cutter gallery image 3">
+                    <img class="gallery-slide" src="images/cookieroller_recipe.jpeg" alt="Rolling Cookie Cutter gallery image 4">
+                </div>
+                <button class="gallery-arrow gallery-next" type="button" aria-label="Next image">→</button>
+            </div>
+            <div class="gallery-dots" aria-label="Gallery navigation">
+                <button class="dot active" type="button" aria-label="Show slide 1"></button>
+                <button class="dot" type="button" aria-label="Show slide 2"></button>
+                <button class="dot" type="button" aria-label="Show slide 3"></button>
+                <button class="dot" type="button" aria-label="Show slide 4"></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const headers = document.querySelectorAll('.accordion-header');
+
+        function closeAllAccordions() {
+            document.querySelectorAll('.accordion-item').forEach((accordionItem) => {
+                accordionItem.classList.remove('open');
+                const header = accordionItem.querySelector('.accordion-header');
+                const panel = accordionItem.querySelector('.accordion-panel');
+                const icon = accordionItem.querySelector('.icon');
+
+                header.classList.remove('active');
+                header.setAttribute('aria-expanded', 'false');
+                if (icon) icon.textContent = '+';
+                if (panel) panel.style.maxHeight = null;
+            });
+        }
+
+        headers.forEach((header) => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const panel = item.querySelector('.accordion-panel');
+                const isOpen = item.classList.contains('open');
+
+                closeAllAccordions();
+
+                if (!isOpen) {
+                    item.classList.add('open');
+                    header.classList.add('active');
+                    header.setAttribute('aria-expanded', 'true');
+                    header.querySelector('.icon').textContent = '−';
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                }
+            });
+        });
+
+        const slides = Array.from(document.querySelectorAll('.gallery-slide'));
+        const dots = Array.from(document.querySelectorAll('.dot'));
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            currentSlide = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        document.querySelector('.gallery-next').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        document.querySelector('.gallery-prev').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+    </script>
+</body>
+</html>
